@@ -32,7 +32,6 @@ workflows:
           --build-version "1.0.0" \
           --build-number "$BUILD_NUMBER" \
           --module-name "cfl_app" \
-          --icon logo.png \
           --yes \
           --no-rich-output
 
