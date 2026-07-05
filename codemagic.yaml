@@ -22,7 +22,6 @@ workflows:
           pip install flet httpx
 
       - name: Build IPA
-         - name: Build IPA
   script: |
     flet build ipa \
       --project "CFL Giftcode" \
