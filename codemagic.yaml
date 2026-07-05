@@ -2,18 +2,23 @@ workflows:
   build-ipa:
     name: Build IPA
     max_build_duration: 60
+
     instance_type: mac_mini_m2
+
     environment:
       vars:
         PYTHON_VERSION: "3.13"
+
     scripts:
       - name: Set up Python
         script: |
           pyenv install $PYTHON_VERSION -s
           pyenv global $PYTHON_VERSION
+          python --version
 
       - name: Install dependencies
         script: |
+          python -m pip install --upgrade pip
           pip install flet httpx
 
       - name: Build IPA
@@ -27,14 +32,29 @@ workflows:
             --build-version "1.0.0" \
             --build-number "$BUILD_NUMBER" \
             --module-name "cfl_app" \
-            --no-rich-output \
-            --yes
+            --yes \
+            --no-rich-output
+
+      - name: Debug output
+        script: |
+          echo "========== CURRENT =========="
+          pwd
+
+          echo "========== IPA =========="
+          find . -name "*.ipa"
+
+          echo "========== APP =========="
+          find . -name "*.app"
+
+          echo "========== BUILD =========="
+          find build || true
 
     artifacts:
-      - build/ipa/*.ipa
-      - build/ios-simulator/*.app
+      - "**/*.ipa"
+      - "**/*.app"
+      - "**/*.log"
 
     publishing:
       email:
         recipients:
-          - dtmgog@gmail.com
+          - dtmpubg01@gmail.com
