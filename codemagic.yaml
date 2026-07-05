@@ -22,18 +22,19 @@ workflows:
           pip install flet httpx
 
       - name: Build IPA
-        script: |
-          flet build ipa \
-            --project "CFL Giftcode" \
-            --product "CFL Auto Giftcode" \
-            --org "com.dtmcfl" \
-            --bundle-id "com.dtmcfl.giftcode" \
-            --description "Auto giftcode cho Crossfire Legends VNG" \
-            --build-version "1.0.0" \
-            --build-number "$BUILD_NUMBER" \
-            --module-name "cfl_app" \
-            --yes \
-            --no-rich-output
+         script: |
+    flet build ipa \
+      --project "CFL Giftcode" \
+      --product "CFL Auto Giftcode" \
+      --org "com.dtmcfl" \
+      --bundle-id "com.dtmcfl.giftcode" \
+      --description "Auto giftcode cho Crossfire Legends VNG" \
+      --build-version "1.0.0" \
+      --build-number "$BUILD_NUMBER" \
+      --module-name "cfl_app" \
+      --icon logo.png \
+      --yes \
+      --no-rich-output
 
       - name: Debug output
         script: |
