@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+build/
+dist/
+dist_nuitka/
+*.apk
+*.exe
+*.ico
+*.png
+node_modules/
+results.json
+nuitka-crash-report.xml
+build_log*.txt
