@@ -1,1 +1,0 @@
-# cfl-giftcode-ios
